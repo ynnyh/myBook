@@ -1,6 +1,6 @@
 ---
 title: 面向对象的JS
-tags: 新建,模板,小书匠
+tags: JS 面向对象
 grammar_cjkRuby: true
 ---
 
