@@ -70,3 +70,27 @@ function rowSumOddNumbers(n) {
   return Math.pow(n, 3);
 }
 ```
+### 4. 给定一个字符串，如果其长度是奇数则返回中间字符，如果是偶数则返回中间两个字符如下
+```
+// 'test' return 'es'
+// 'eat' return 'a'
+// 'a' return 'a'
+// 解法1
+function getMiddle(s)
+{
+  if (s.length <= 2) {
+    return s;
+  } else {
+    if (s.length % 2 === 1) {
+      return s.split('')[(s.length - 1) / 2];
+    } else {
+      return s.split('')[s.length / 2 - 1] + s.split('')[s.length / 2];
+    }
+  }
+}
+// 解法2
+function getMiddle(s)
+{
+  return s.substr(Math.ceil(s.length / 2 - 1), s.length % 2 === 0 ? 2 : 1);
+}
+```
