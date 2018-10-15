@@ -94,3 +94,73 @@ function getMiddle(s)
   return s.substr(Math.ceil(s.length / 2 - 1), s.length % 2 === 0 ? 2 : 1);
 }
 ```
+### 5. 将给定字符转换为驼峰法，有可能是段划线-或下划线_
+```
+// 解法1
+function toCamelCase(str){
+  if (str.length === 0) {
+    return '';
+  } else {
+    let arr = str.indexOf('_') === -1 ? str.split('-') : str.split('_');
+    let f = arr.splice(0, 1);
+    let newArr = [];
+    arr.map(item => {
+      let a = item.substr(0, 1).toUpperCase() + item.substr(1);
+      newArr.push(a);
+      return newArr;
+    });
+    return f + newArr.join('');
+  }
+}
+// 解法2
+function toCamelCase(str){
+  return str.split(/-|_/g).map((w, i) => (i > 0 ? w.charAt(0).toUpperCase() : w.charAt(0)) + w.slice(1)).join('');
+}
+// 解法3
+function toCamelCase(str){
+  return str.replace(/[-_](.)/g, (_, c) => c.toUpperCase());
+}
+```
+### 6. 按照如下规律进行解题
+```
+ persistence(39) === 3 // because 3*9 = 27, 2*7 = 14, 1*4=4
+                       // and 4 has only one digit
+
+ persistence(999) === 4 // because 9*9*9 = 729, 7*2*9 = 126,
+                        // 1*2*6 = 12, and finally 1*2 = 2
+
+ persistence(4) === 0 // because 4 is already a one-digit number
+// 解法1
+function persistence(num) {
+   let a = num.toString().split('');
+   let b = 0;
+   function sum(sumNum) {
+     if (sumNum.length <= 1) {
+       return b;
+     }
+     b++;
+     a = sumNum.reduce((accumulator, currentValue) => {
+        return accumulator * currentValue;
+    }).toString().split('');
+    if (a.length > 1) {
+      sum(a);
+    }
+    return b;
+  }
+  sum(a);
+  return b;
+}
+// 解法2
+function persistence(num) {
+   var times = 0;
+   
+   num = num.toString();
+   
+   while (num.length > 1) {
+     times++;
+     num = num.split('').reduce((a, b) => a * b).toString();
+   }
+   
+   return times;
+}
+```
