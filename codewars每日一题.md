@@ -164,3 +164,17 @@ function persistence(num) {
    return times;
 }
 ```
+### 7. 给定任意数字，求该数字的阶乘结果最后有几个0，如下
+```
+// 给定数字5，则得到5*4*3*2*1=120有一个0
+// 解法（运用原理是质因数分解即仅2*5=10后面有0）
+function zeros (n) {
+  let count = 0;
+  let a = 5;
+  while (n / a >= 1) {
+    count += Math.floor(n / a);
+    a *= 5;
+  }
+  return count;
+} 
+```
