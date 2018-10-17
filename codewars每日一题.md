@@ -178,3 +178,21 @@ function zeros (n) {
   return count;
 } 
 ```
+### 8. 讨论区 (39)
+完成将 toChineseNum， 可以将数字转换成中文大写的表示，处理到万级别，例如 toChineseNum(12345)，返回 一万二千三百四十五
+```
+// 解法
+const toChineseNum = (num) => {
+  let unit = ['', '十', '百', '千', '万']
+  let numArr = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九']
+  let arrNum = num.toString().split("").reverse();
+  let strArr = arrNum.map((v, i) => {
+   if (i === 4 && parseInt(v) === 0) {
+      return "万"
+    }
+    i = i > 4 ? i - 4 : i;
+    return parseInt(v) === 0 ? numArr[v] : numArr[v] + unit[i - 0]
+  })
+  return strArr.reverse().join("").replace(/(零(?=零))|(零$)|(零(?=万))/g, '')
+}
+```
