@@ -178,8 +178,7 @@ function zeros (n) {
   return count;
 } 
 ```
-### 8. 讨论区 (39)
-完成将 toChineseNum， 可以将数字转换成中文大写的表示，处理到万级别，例如 toChineseNum(12345)，返回 一万二千三百四十五
+### 8. 完成将 toChineseNum， 可以将数字转换成中文大写的表示，处理到万级别，例如 toChineseNum(12345)，返回 一万二千三百四十五
 ```
 // 解法
 const toChineseNum = (num) => {
