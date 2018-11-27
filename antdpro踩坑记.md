@@ -12,3 +12,5 @@ tags: antd-pro
 dispatch().then(res => 做自己的事)
 // 此处的res事没有数据的，我们需要在model中return出需要的值也就是期望的res的值，则此处即可接受到值
 ```
+### antd-mobile中ListView使用
+该组件的datasource需要在本地state中初始化并使用，所以会出现数据和model中数据不同步的问题，需要在dispatch的时候返回数据并且同步保存在model中。
